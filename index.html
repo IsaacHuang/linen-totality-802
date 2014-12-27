@@ -7,8 +7,55 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script language="actionscript">
+  var cam:Camera = Camera.getCamera(); 
+  var vid:Video = new Video(); 
+  vid.attachCamera(cam); 
+  addChild(vid);
+  
+private function onLaunchCameraUI(e:Event):void
+{
+    if (Camera.names.length > 0) 
+{ 
+    trace("User has at least one camera installed."); 
+    var cam:Camera = Camera.getCamera(); // Get default camera. 
+} 
+else 
+{ 
+    trace("User has no cameras installed."); 
+}
+    var cameraUI:CameraUI = new CameraUI();
+    cameraUI.addEventListener(MediaEvent.COMPLETE, onCameraUIComplete);
+    cameraUI.addEventListener(Event.CANCEL, onCameraUICanceled);
+    cameraUI.addEventListener(ErrorEvent.ERROR, onCameraError);
+    cameraUI.launch(MediaType.IMAGE);
+}
+
+private function onCameraUIComplete(e:MediaEvent):void
+{
+    var cameraUI:CameraUI = e.target as CameraUI;
+    cameraUI.removeEventListener(MediaEvent.COMPLETE, onCameraUIComplete);
+    cameraUI.removeEventListener(Event.CANCEL, onCameraUICanceled);
+    cameraUI.removeEventListener(ErrorEvent.ERROR, onCameraError);
+
+    var mediaPromise:MediaPromise = e.data;
+  
+    this.mpLoader = new Loader();
+    this.mpLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onMediaPromiseLoaded);
+    this.mpLoader.addEventListener(IOErrorEvent.IO_ERROR, onMediaPromiseLoadError);
+    this.mpLoader.loadFilePromise(mediaPromise);
+}
+  
+private function onMediaPromiseLoaded(e:Event):void
+{
+    var mpLoaderInfo:LoaderInfo = e.target as LoaderInfo;
+    mpLoaderInfo.removeEventListener(Event.COMPLETE, onMediaPromiseLoaded);
+    mpLoaderInfo.loader.removeEventListener(IOErrorEvent.IO_ERROR, onMediaPromiseLoadError);
+    this.imageDisplay.source = mpLoaderInfo.loader;
+}
+  </script>
 </head>
-<body>
+<body onload="onLaunchCameraUI()">
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
