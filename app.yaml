@@ -9,5 +9,9 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: .*
-  script: main.php
+- url: /
+  static_files: index.html
+  upload: templates/index.html
+
+- url: /facebook
+  script: facebook.php
