@@ -10,8 +10,8 @@ handlers:
   upload: favicon\.ico
 
 - url: /
-  static_files: index.html
-  upload: templates/index.html
+  script: frame.php
+
 
 - url: /facebook
   script: facebook.php
