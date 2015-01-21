@@ -12,6 +12,3 @@ handlers:
 - url: /
   script: frame.php
 
-
-- url: /facebook
-  script: facebook.php
