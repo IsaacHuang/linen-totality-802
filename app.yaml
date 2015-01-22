@@ -12,3 +12,6 @@ handlers:
 - url: /
   script: frame.php
 
+- url: /publish
+  script: publish.php
+

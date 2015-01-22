@@ -1,133 +1,122 @@
-<?php
-    $custom_pic=$_POST['custom_pic'];//取得拍照的照片
-?>
-
-
-<!--<section class="hero" id="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-right navicon">
-                  <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center inner">
-                  <h1 class="animated fadeInDown">回到過去 回憶中原</h1>
-                  <h3 class="animated fadeInUp delay-05s">CYCU Find your memory</h3>
-          
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center">
-                  <a href="#intro" class="learn-more-btn">Start</a>
-                </div>
-            </div>
-        </div>
-    </section>-->
-        <!--介面開始-->
-        <!--<section class="intro text-center section-padding" id="intro">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 wp1">
-                <h1><b>介紹</b></h1>
-                <h1 class="arrow"></h1>
-                  <p>介紹想回味從前的大學時光嗎？<br>
-                  想重返中原大學美麗的往昔景致嗎？<br>快乘上這部時光機跟我們一起探索過去吧！<br>本系統是中原大學60周年校慶特別活動<br>
-                  可選擇中原老校園當背景照相<br>
-                  於臉書分享出去即可參加抽獎唷！<br>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>-->
-        <!--介面結束-->
-        <!--背景照選擇開始-->
-        <!--<section class="swag text-center">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <h1>選張懷念的校園場景吧!</h1><br>
-                <a href="#responsive" class="down-arrow-btn"><i class="fa fa-chevron-down"></i></a>
-              </div>
-            </div>
-          </div>
-        </section>-->
-        <!--<section class="text-center" id="responsive">
-          <div class="container-fluid nopadding responsive-services">
-            <div class="wrapper">
-              <div class="fluid-white"></div>
-            </div>
-            <div class="container designs">
-              <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                  <div id="servicesSlider"><br><br>
-                    <ul class="slides">
-                      <li>
-                        <h1 class="arrow">中原大草皮</h1>
-                        <div class="iphone">
-                          <div class="wp3"></div>
-                        </div>
-                      </li>
-                      <li>
-                        <h1 class="arrow">中原教學大樓</h1>  
-                      </li>
-                      <li>
-                        <h1 class="arrow">中原資館樓</h1>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="#abc" class="down-arrow-btn"><i class="fa fa-chevron-down"></i></a>
-        </section>-->
-        <!--背景照選擇結束-->
-        <!--拍照階段-->
-        <!--<section class="swag text-center" id = "abc">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <h1>來拍照吧!<br><span>做出 <em>獨一無二</em> 的動作</span></h1>
-                <a href="#portfolio" class="down-arrow-btn"><i class="fa fa-chevron-down"></i></a>
-              </div>
-            </div>
-          </div>
-        </section>-->
         <!--合成圖片-->
-        <section class="portfolio text-center section-padding" id="portfolio">
+        <section class="intro1" id="end">
           <div class="container">
             <div class="row">
-              <div id="portfolioSlider">
-                <h1></h1>
+              <div class=" text-center">
+                <h1 class="arrow"><b>合成照</b></h1>
+
+                <div id='pic_block'>
+                  <p>The mouse pointer position is at: <span></span></p>
+                  <?php echo "<img id='custom_pic' name='custom_pic' src='".$custom_pic."'/>";?>
+                  <canvas id="pic" name="pic" style="border:1px solid #d3d3d3"></canvas>
+                  <img src="" id='pic_finish'/>
                 </div>
-                <div class="abox">
-                  <!--將表格傳送至=>php Server的url-->
-                  <form role="form" id="form1" action="http://linen-totality-802.appspot.com/" enctype="multipart/form-data" method="post">
-                    <!--拍照後data的存放地點-->
-                    <!--<input type="hidden" name="custom_pic" id="custom_pic">-->
-                    <!--<input type="hidden" name="is_video" id="is_video" value="yes">-->
-                    <!--執行拍照-->
-                    <!--<button type="button" class="btn btn-primary" id="screenshot-button">Take!</button>
-                    
-                  </form>  <br/>
-                    <div class="row">
-                      <div class="col-md-12" id='screen'>-->
-                        <!--螢幕的即時呈現-->
-                        <!--<video id="videoscreen" style="width:95%;" autoplay></video>
-                        <img id="screen-stream" src="" alt="" />-->
-                        <!--拍照後圖片呈現-->
-                        <!--<img id="screenshot" style="width:95%;" src="">
-                        <canvas id="screenshot-canvas"></canvas>-->
-                        <?php echo "<img src='".$custom_pic."'>";?>
-                      </div>
-                    </div>
-                </div>
-                <!--拍照階段結束-->
+                <div id='background_block' name='background_block'>
+                  <?php echo "<img id='bg_pic' name='bg_pic' src='https://sites.google.com/site/cycufindyourmemory/config/pagetemplates/img/background-".$background.".jpg'/>";?>
+                  <canvas id="background" name="background" style="border:1px solid #d3d3d3"></canvas>
+                </div><br/>
+                <button class="btn btn-primary" id="confirm">確定</button>
+                <button class="btn btn-primary" id="reset">重置</button>
               </div>
             </div>
           </div>
         </section>
-        <div id="fb-root">
-          <?php echo "<div class='fb-share-button' data-href='".$custom_pic." data-layout='button_count'></div>";?>
-        </div>
+        <script>
+        
+
+        $(document).ready(function(){
+          //得知現在的pagex
+          $(document).mousemove(function(event){ 
+            $("span").text("X: " + event.pageX + ", Y: " + event.pageY); 
+          });
+
+          //將背景圖畫入畫布
+          var canvas_bg = document.getElementById("background");//讀取canvas的內部值
+          var img_bg = document.getElementById("bg_pic");
+          var ImgWidth_bg = img_bg.width;
+          var ImgHeight_bg = img_bg.height;
+          canvas_bg.width = ImgWidth_bg;
+          canvas_bg.height = ImgHeight_bg;
+          var ctx_bg = canvas_bg.getContext("2d");
+          ctx_bg.drawImage(img_bg,0,0);
+
+          //將相片畫入畫布
+          var canvas_pic = document.getElementById("pic");
+          var img_pic = document.getElementById("custom_pic");
+          var ImgWidth_pic = img_pic.width;
+          var ImgHeight_pic = img_pic.height;
+          canvas_pic.width = ImgWidth_pic;
+          canvas_pic.height = ImgHeight_pic;
+          var ctx_pic = canvas_pic.getContext("2d");
+          ctx_pic.drawImage(img_pic,0,0);
+
+          //隱藏接收的圖片
+          $('#bg_pic').hide();
+          $('#custom_pic').hide();
+
+          //去背
+          var area = "#ffffff";
+          var curSize = 30;
+          var clickDrag = new Array();
+          var drawingAreaX = 362;
+          var drawingAreaY = 980;
+          var clickX = new Array();
+          var clickY = new Array();
+          var paint = false;
+          var mediumStartX = 362;
+          var mediumStartY = 980;
+          var mediumImageWidth = ImgWidth_pic;
+          var mediumImageHeight = ImgHeight_pic;
+          var drawingAreaX = 362;
+          var drawingAreaY = 980;
+          var drawingAreaWidth = ImgWidth_pic;
+          var drawingAreaHeight = ImgHeight_pic;
+          drawingcanvas = document.createElement('canvas');
+          drawingcanvas.setAttribute('width', ImgWidth_pic);
+          drawingcanvas.setAttribute('height', ImgHeight_pic);
+          drawingcanvas.setAttribute('id', 'drawingcanvas');
+          pic.appendChild(drawingcanvas);
+          var drawing_ctx = drawingcanvas.getContext("2d");
+          redraw();
+          $('#drawingcanvas').mousedown(function(e){
+            
+            var mouseX = e.pageX - this.offsetLeft;
+            var mouseY = e.pageY - this.offsetTop;
+            if(mouseY > drawingAreaY && mouseY < drawingAreaY + drawingAreaHeight)
+            {
+              // Mouse click location on drawing area
+              paint = true;
+              addClick(mouseX, mouseY, true);
+              redraw();
+            }
+          });
+          $('#drawingcanvas').mousemove(function(e){
+            if(paint==true){
+              addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+              redraw();
+            }
+          });
+          $('#drawingcanvas').mouseup(function(e){
+            paint = false;
+            redraw();
+          });
+
+          $('#drawingcanvas').mouseleave(function(e){
+            paint = false;
+          });
+
+        });
+
+        //重置
+        $('reset').click(function(){
+          ctx_pic.clearRect(0, 0, drawingAreaWidth, drawingAreaHeight);
+        });
+
+
+
+        //合成完成
+        $('confirm').click(function(){
+          var pic_finish = document.querySelector();
+        });
+        
+        </script>

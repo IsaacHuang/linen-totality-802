@@ -1,21 +1,23 @@
-<header id='home'>
-            <nav>
-                <div class='container-fluid'>
-                    <div class='row'>
-                      <div class='col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2'>
-                  <nav class='pull'>
-                    <div class='navbar navbar-default' role='navigation'>
-                      <ul class='top-nav'>
-                        <li><a href='#intro'> <span class='indicator'><i class='fa fa-angle-right'></i></span></a></li>
-                        <li><a href='#features'><span class='indicator'><i class='fa fa-angle-right'></i></span></a></li>
-                        <li><a href='#responsive'> <span class='indicator'><i class='fa fa-angle-right'></i></span></a></li>
-                        <li><a href='#hero'> <span class='indicator'><i class='fa fa-angle-right'></i></span></a></li>
-                        <li><a href='#hero'><span class='indicator'><i class='fa fa-angle-right'></i></span></a></li>
-                      </ul>
-                    </div>
-                  </nav>
+<header id="home">
+          
+          <section class="hero1" id="hero1">
+            <div class="container">
+              
+              <div class="row">
+                <div class="col-md-7 col-md-offset-2 ">
+                  <h1 class="animated fadeInDown">編輯合成照</h1>
+                  <br>
+          <br>
+          <br>
+          <br>
+         
                 </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                   <a href="#end" class="down-arrow-btn"><i class="fa fa-chevron-down"></i></a>
+                </div>
+              </div>
             </div>
-        </div>
-    </nav>
-</header>
+          </section>
+        </header>

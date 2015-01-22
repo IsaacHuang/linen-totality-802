@@ -48,13 +48,28 @@ window.fbAsyncInit = function() {
 
 FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
+
+    FB.ui({
+      method: 'feed',
+      name: '中原大學六十週年',
+      link: 'http://linen-totality-802.appspot.com',
+      picture: $("#photo").val(),
+      caption: 'Fifi Lapin'},
+      function (response) {
+        if (response && response.post_id) {
+          // 已經貼到塗鴉牆
+        } else {
+          // 沒貼到塗鴉牆
+        }
+      }
+    );
   });
 
   (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=815885811794965&version=v2.0";
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=818779268172286&version=v2.2";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
       //FaceBook API jQuery end
@@ -114,8 +129,8 @@ function base64_url_decode($input) {
 	function ShowFeed() {
 		FB.ui({
 			method: 'feed',
-			name: $("#title").val(),
-			link: 'http://apps.facebook.com/scolorappx/',
+			name: '中原大學六十週年',
+			link: 'http://linen-totality-802.appspot.com',
 			picture: $("#CImg").val(),
 			caption: 'Fifi Lapin',
 			description: $("#des").val()},

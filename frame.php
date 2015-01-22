@@ -5,6 +5,8 @@
   </head>
   <?php include 'script.php';?>
   <body>
+    <div id="fb-root"></div>
+    <?php include 'facebook.php';?>
     <?php include 'header.php';?>
     <?php include 'home.php';?>
     <footer>
