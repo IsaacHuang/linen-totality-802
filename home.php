@@ -71,17 +71,65 @@
           var drawingAreaY = 980;
           var drawingAreaWidth = ImgWidth_pic;
           var drawingAreaHeight = ImgHeight_pic;
-          drawingcanvas = document.createElement('canvas');
+          var drawingcanvas = document.createElement('canvas');
           drawingcanvas.setAttribute('width', ImgWidth_pic);
           drawingcanvas.setAttribute('height', ImgHeight_pic);
           drawingcanvas.setAttribute('id', 'drawingcanvas');
           pic.appendChild(drawingcanvas);
           var drawing_ctx = drawingcanvas.getContext("2d");
+          function redraw(){
+  
+            var locX = 362;
+            var locY = 980;
+            drawing_ctx.beginPath();
+            drawing_ctx.fillStyle = "#ffffff";
+            drawing_ctx.rect(locX, locY, 2, 12);
+            drawing_ctx.closePath();
+  
+            drawing_ctx.fill(); 
+            drawing_ctx.save();
+            drawing_ctx.beginPath();
+            drawing_ctx.rect(drawingAreaX+10, drawingAreaY+10, ImgWidth_pic-100, ImgHeight_pic-100);
+            drawing_ctx.clip();
+            var i=0;
+            for(; i < clickX.length; i++){ 
+              drawing_ctx.beginPath();
+              if(clickDrag[i] && i){
+              drawing_ctx.moveTo(clickX[i-1], clickY[i-1]);
+              }else{
+                drawing_ctx.moveTo(clickX[i], clickY[i]);
+              }
+                drawing_ctx.lineTo(clickX[i], clickY[i]);
+                drawing_ctx.closePath();
+                drawing_ctx.strokeStyle = 'white';
+                drawing_ctx.lineJoin = "round";
+                drawing_ctx.lineWidth = curSize;
+                drawing_ctx.stroke();
+            }
+                drawing_ctx.restore();
+                drawing_ctx.globalAlpha = 1;
+                drawing_ctx.drawImage(img_pic, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+          }
+
+          function addClick(x, y, dragging)
+          {
+            clickX.push(x);
+            clickY.push(y);
+            clickColor.push(area);
+            clickSize.push(curSize);
+            clickDrag.push(dragging);
+          };
+
+          function clearCanvas()
+          {
+            drawing_ctx.clearRect(0, 0,ImgWidth_pic ,ImgHeight_pic );
+          };
           redraw();
           $('#drawingcanvas').mousedown(function(e){
             
             var mouseX = e.pageX - this.offsetLeft;
             var mouseY = e.pageY - this.offsetTop;
+
             if(mouseY > drawingAreaY && mouseY < drawingAreaY + drawingAreaHeight)
             {
               // Mouse click location on drawing area
@@ -105,18 +153,18 @@
             paint = false;
           });
 
+          //重置
+          $('reset').click(function(){
+            clearCanvas();
+          });
+
+
+
+          //合成完成
+          $('confirm').click(function(){
+            var pic_finish = document.querySelector();
+          });
         });
-
-        //重置
-        $('reset').click(function(){
-          ctx_pic.clearRect(0, 0, drawingAreaWidth, drawingAreaHeight);
-        });
-
-
-
-        //合成完成
-        $('confirm').click(function(){
-          var pic_finish = document.querySelector();
-        });
+        
         
         </script>

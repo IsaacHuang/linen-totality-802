@@ -152,19 +152,38 @@ $(window).load(function() {
 
 });
 /********去背**********/
-function addClick(x, y, dragging)
-{
-	clickX.push(x);
-	clickY.push(y);
-	clickColor.push(area);
-	clickSize.push(curSize);
-	clickDrag.push(dragging);
-};
 
-function clearCanvas()
-{
-	drawing_ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-};
+function CanvasRenderingContext2D_(surfaceElement) {
+    this.m_ = createMatrixIdentity();
+
+    this.mStack_ = [];
+    this.aStack_ = [];
+    this.currentPath_ = [];
+
+    // Canvas context properties
+    this.strokeStyle = '#000';
+    this.fillStyle = '#000';
+
+    this.lineWidth = 1;
+    this.lineJoin = 'miter';
+    this.lineCap = 'butt';
+    this.miterLimit = Z * 1;
+    this.globalAlpha = 1;
+    this.canvas = surfaceElement;
+
+    var el = surfaceElement.ownerDocument.createElement('div');
+    el.style.width =  surfaceElement.clientWidth + 'px';
+    el.style.height = surfaceElement.clientHeight + 'px';
+    el.style.overflow = 'hidden';
+    el.style.position = 'absolute';
+    surfaceElement.appendChild(el);
+
+    this.element_ = el;
+    this.arcScaleX_ = 1;
+    this.arcScaleY_ = 1;
+    this.lineScale_ = 1;
+  }
+
 var contextPrototype = CanvasRenderingContext2D_.prototype;
   contextPrototype.clearRect = function() {
     this.element_.innerHTML = '';
@@ -191,38 +210,5 @@ var contextPrototype = CanvasRenderingContext2D_.prototype;
     this.currentY_ = p.y;
   };
 
-function redraw()
-{
-	
-	var locX = 362;
-	var locY = 980;
-	drawing_ctx.beginPath();
-	drawing_ctx.rect(locX, locY, 2, 12);
-	drawing_ctx.closePath();
-	drawing_ctx.fillStyle = area;
-	drawing_ctx.fill();	
-	drawing_ctx.save();
-	drawing_ctx.beginPath();
-	drawing_ctx.rect(drawingAreaX, drawingAreaY, ImgWidth_pic, ImgHeight_pic);
-	drawing_ctx.clip();
-	var i=0;
-	for(; i < clickX.length; i++)
-	{	
-		drawing_ctx.beginPath();
-		if(clickDrag[i] && i){
-			drawing_ctx.moveTo(clickX[i-1], clickY[i-1]);
-		}else{
-			drawing_ctx.moveTo(clickX[i], clickY[i]);
-		}
-		drawing_ctx.lineTo(clickX[i], clickY[i]);
-		drawing_ctx.closePath();
-		drawing_ctx.strokeStyle = 'white';
-		drawing_ctx.lineJoin = "round";
-		drawing_ctx.lineWidth = curSize;
-		drawing_ctx.stroke();
-	}
-	drawing_ctx.restore();
-	drawing_ctx.globalAlpha = 1;
-	drawing_ctx.drawImage(img_pic, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
-}
+
 </script>
