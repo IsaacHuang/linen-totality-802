@@ -1,6 +1,22 @@
 <?php
     $custom_pic=$_POST['custom_pic'];//取得拍照的照片
     $background=$_POST['background'];//取得背景值
+    /*//縮圖程式
+    $src=imagecreatefromjpeg($custom_pic);
+    $src_w=imagesx($src);
+    $src_h=imagesy($src);
+    if($src_w>$src_h){
+        $thumb_w=100;
+        $thumb_h=intval($src_h/$src_w*100);
+    }else{
+        $thumb_h=100;
+        $thumb_w=intval($src_w/$src_h*100);
+    }
+    $thumb=imagecreatetruecolor($thumb_w, $thumb_h);
+    imagecopyresized($thumb, $src, 0, 0, 0, 0, $thumb_w, $thumb_h, $src_w, $src_h);
+    imagejpeg($thumb,$custom_pic);
+    echo "已完成縮圖！";*/
+
 ?>       
 
        <meta charset="utf-8">
