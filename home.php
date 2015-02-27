@@ -51,8 +51,8 @@
           ctx_pic.drawImage(img_pic,0,0);
 
           //隱藏接收的圖片
-          $('#bg_pic').hide();
-          $('#custom_pic').hide();
+          //$('#bg_pic').hide();
+          //$('#custom_pic').hide();
 
           //去背
           var area = "#ffffff";
