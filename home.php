@@ -3,13 +3,12 @@
           <div class="container">
             <div class="row">
               <div class=" text-center">
-                <h1 class="arrow"><b>合成照</b></h1>
+                <h1 class="arrow">合成照</h1>
 
                 <div id='pic_block'>
                   <p>The mouse pointer position is at: <span></span></p>
                   <?php echo "<img id='custom_pic' name='custom_pic' src='".$custom_pic."'/>";?>
                   <canvas id="pic" name="pic" style="border:1px solid #d3d3d3"></canvas>
-                  <img src="" id='pic_finish'/>
                 </div>
                 <div id='background_block' name='background_block'>
                   <?php echo "<img id='bg_pic' name='bg_pic' src='https://sites.google.com/site/cycufindyourmemory/config/pagetemplates/img/background-".$background.".jpg'/>";?>
